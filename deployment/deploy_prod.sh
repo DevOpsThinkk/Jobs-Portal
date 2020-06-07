@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ssh root@103.108.140.130 <<EOF
+ssh root@192.168.33.40 <<EOF
   cd /var/www/html/jobsproject/jobsportal/
   git pull
   cd /var/www/html/jobsproject/
