@@ -23,14 +23,14 @@ log()
 PostgreSQL_setup(){
     log "INFO: Start Postgresql Installation"
         echo "======================================================================================"
-    apt install postgresql postgresql-contrib -y
+    apt install postgresql postgresql-contrib python-psycopg2 libpq-dev -y
 }
 Python38_setup(){
     log "INFO: Start Python 3.8 Installation"
         echo "======================================================================================"
     apt install software-properties-common -y
     add-apt-repository ppa:deadsnakes/ppa -y
-    apt install python3.8 -y 
+    apt install python3.8 python-dev  -y 
 }
 
 Git_setup(){
@@ -54,7 +54,7 @@ Create_directory(){
 
 python_virtualenv_setup(){
     log "INFO: Start Python Virtual environment setup"
-    pip3 install virtualenv
+    pip3 install virtualenv 
     virtualenv myprojectenv || log  "ERROR: Python virtual environment setup failed" $?
     log "INFO: Python virtual environment setup Complete"
 
