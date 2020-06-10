@@ -1,6 +1,7 @@
 ## Django Job Portal
 
-# Implimentation steps:
+### Implimentation steps:
+```
 ./prerequisite.sh
 cd /home/django
 git clone https://github.com/DevOpsGH/Jobs-Portal.git
@@ -8,13 +9,14 @@ mv Jobs-Portal myproject
 source /home/django/myprojectenv/bin/activate
 cd myproject
 pip3 install -r requirements.txt
+```
 
-
-# Apache Server Configuration
+### Apache Server Configuration
+```
 cd /etc/apache2/sites-available
 vi 000-default.conf
-
-### Replace below content and save :wq! 
+```
+##### Replace below content and save :wq! 
 ```
 <VirtualHost *:80>
     ServerAdmin webmaster@example.com
@@ -36,37 +38,13 @@ vi 000-default.conf
 </VirtualHost>
 ```
 
-# Edit Apache 2 configuration file and make allow
+### Edit Apache 2 configuration file and make allow
+```
 cd /etc/apache2
 vi apache2.conf
-
 ```
-<Directory />
-        Options FollowSymLinks
-        AllowOverride All
-        Require all granted
-</Directory>
-
-<Directory /usr/share>
-        AllowOverride All
-        Require all granted
-</Directory>
-
-<Directory /var/www/>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-</Directory>
-
-<Directory /home/django/myproject/>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-</Directory>
-
+### Grant required permissions and restart the services
 ```
-
-# Grant required permissions and restart the services
 cd /home/django/myproject
 chmod 664 db.sqlite3
 chown :www-data db.sqlite3
@@ -76,20 +54,19 @@ chmod  a+x /home/django/myproject/jobs/urls.py
 chmod  a+x /home/django/myproject/jobs/settings.py
 
 service apache2 restart
-
-# Check error log if you encounter any issue
+```
+### Check error log if you encounter any issue
+```
 cd /var/log/apache2/
 tail -150 /var/log/apache2/error.log
 tail -150 /var/log/apache2/access.log
 tail -150 /var/log/apache2/other_vhosts_access.log
-
-# Workarounds for 500 error
-### Removed python2 version libraries
+```
+### Workarounds for 500 error
+##### Removed python2 version libraries
 apt-get remove libapache2-mod-python libapache2-mod-wsgi
-### Installed Python 3 version libraries
+##### Installed Python 3 version libraries
 apt-get install libapache2-mod-wsgi-py3
-
-
 
 
 #### An open source online job portal.
