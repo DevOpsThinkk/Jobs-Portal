@@ -63,11 +63,12 @@ tail -150 /var/log/apache2/access.log
 tail -150 /var/log/apache2/other_vhosts_access.log
 ```
 ### Workarounds for 500 error
+```
 ##### Removed python2 version libraries
 apt-get remove libapache2-mod-python libapache2-mod-wsgi
 ##### Installed Python 3 version libraries
 apt-get install libapache2-mod-wsgi-py3
-
+```
 
 #### An open source online job portal.
 
